@@ -1,0 +1,104 @@
+/* Pure page ko full height do */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* login.css */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #b8ffe1; 
+}
+.login-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-box form {
+  background: rgb(255, 255, 255);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.login-container input {
+  width: 93%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  color: black;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+.login-container input:focus {
+  border-color: #2575fc;
+  outline: none;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-container button:hover {
+  background: #1b5edb;
+}
+
+.login-container p {
+  margin-top: 15px;
+  font-size: 14px;
+  color: black;
+}
+
+.login-container a {
+  color: #2575fc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* icon ke liye space */
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+}
