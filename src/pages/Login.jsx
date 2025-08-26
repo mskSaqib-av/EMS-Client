@@ -50,7 +50,7 @@ const Login = () => {
                 className="toggle-password"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? "👁️" : "🙈"}
+                {showPassword ? "👁️" : "👁️"}
               </span>
             </div>
             <button type="submit">Login</button>
