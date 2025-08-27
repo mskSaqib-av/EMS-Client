@@ -8,17 +8,19 @@ import {
   IconButton,
   Drawer,
   List,
-  ListItem,
+  ListItemButton,
   ListItemText,
   Box,
   Button,
+  Collapse,
 } from "@mui/material";
-import { Menu as MenuIcon, Logout } from "@mui/icons-material";
+import { Menu as MenuIcon, Logout, ExpandLess, ExpandMore } from "@mui/icons-material";
 
 const drawerWidth = 220;
 
 export default function DashboardLayout({ children }) {
   const [open, setOpen] = React.useState(true);
+  const [userMenuOpen, setUserMenuOpen] = React.useState(false);
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
   const handleLogout = () => {
@@ -43,13 +45,34 @@ export default function DashboardLayout({ children }) {
       >
         <Toolbar />
         <List>
-          {["Dashboard", "Employees", "Leaves", "Overtime", "Reports"].map(
-            (text) => (
-              <ListItem button key={text}>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
+          {/* Dashboard Link */}
+          <ListItemButton onClick={() => navigate("/dashboard")} style={{ textDecoration: "none" }}>
+            <ListItemText primary="Dashboard" />
+          </ListItemButton>
+
+          {/* User Management with Submenu */}
+          <ListItemButton onClick={() => setUserMenuOpen(!userMenuOpen)}>
+            <ListItemText primary="User Management" />
+            {userMenuOpen ? <ExpandLess /> : <ExpandMore />}
+          </ListItemButton>
+          <Collapse in={userMenuOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => navigate("/users")}
+                style={{ textDecoration: "none" }}
+              >
+                <ListItemText primary="Users" />
+              </ListItemButton>
+              <ListItemButton
+                sx={{ pl: 4 }}
+                onClick={() => navigate("/user-permissions")}
+                style={{ textDecoration: "none" }}
+              >
+                <ListItemText primary="User Permissions" />
+              </ListItemButton>
+            </List>
+          </Collapse>
         </List>
       </Drawer>
 
@@ -59,7 +82,7 @@ export default function DashboardLayout({ children }) {
         sx={{
           flexGrow: 1,
           transition: "margin 0.3s",
-          marginLeft: open ? `${drawerWidth}px` : "0px",
+          //marginLeft: open ? `${drawerWidth}px` : "0px",
         }}
       >
         {/* Top Navbar */}

@@ -5,15 +5,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
-  const { logout } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
-
+  
   return (
     <DashboardLayout>
     {/* Dashboard Content */}
