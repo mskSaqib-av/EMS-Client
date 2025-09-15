@@ -39,17 +39,20 @@ export default function UsersTable({ users }) {
       <table id="users-table" border="1" width="100%" cellPadding={8}>
         <thead>
           <tr>
-            <th>S.NO</th><th>Code</th><th>UserName</th><th>Email</th><th>Phone</th><th>Date Of Birth</th><th>Action</th>
+            <th>S.NO</th><th>Code</th><th>UserName</th><th>Email</th><th>Phone</th><th>Active</th><th>Action</th>
           </tr>
         </thead>
         <tbody>
           {users.length > 0 ? (
-            users.map((u) => (
+            users.map((u, index) => (
               <tr key={u.id}>
-                <td>{u.id}</td>
-                <td>{u.name}</td>
+                <td>{index + 1}</td> {/* ✅ S.NO auto increment */}
+                <td>{u.code}</td>
+                <td>{u.userName}</td>
                 <td>{u.email}</td>
-                <td>{u.role}</td>
+                <td>{u.phone}</td>
+                <td>{u.active ? "✔️" : "❌"}</td>
+                <td></td>
               </tr>
             ))
           ) : (

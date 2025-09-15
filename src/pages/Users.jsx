@@ -1,9 +1,24 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import axios from '../api/axios';
 import { Grid, Card, CardContent, Typography } from "@mui/material";
 import DashboardLayout from "../layout/DashboardLayout";
-import UsersTable from "../components/UsersTable";
+import UsersTable from "../components/Tables/UsersTable";
 
 export default function Users() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const res = await axios.get("/User/GetUser"); // baseURL auto add
+        setUsers(res.data.data);
+      } catch (err) {
+        console.error("Error fetching users:", err);
+      }
+    };
+
+    fetchUsers(); // call async fn
+  }, []);
   return (
         <DashboardLayout>
         {/* Users Content */}
@@ -17,7 +32,7 @@ export default function Users() {
                     Total Users
                   </Typography>
                   <Typography variant="h4" color="primary">
-                    100
+                    {users.length}
                   </Typography>
                 </CardContent>
               </Card>
@@ -30,7 +45,7 @@ export default function Users() {
                     Active Users
                   </Typography>
                   <Typography variant="h4" color="success.main">
-                    85
+                    {users.filter((u) => u.active).length}
                   </Typography>
                 </CardContent>
               </Card>
@@ -43,13 +58,15 @@ export default function Users() {
                     Inactive Users
                   </Typography>
                   <Typography variant="h4" color="warning.main">
-                    8
+                    {users.filter((u) => !u.active).length}
                   </Typography>
                 </CardContent>
               </Card>
             </Grid>
             
           </Grid>
+          {/* Users Table */}
+        <UsersTable users={users} />
         </DashboardLayout>
       );
 }
