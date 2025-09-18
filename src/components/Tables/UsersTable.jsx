@@ -1,13 +1,13 @@
 import { Button } from "@mui/material";
-
+import "/src/index.css"
 export default function UsersTable({ users }) {
   const exportToCSV = () => {
     const csvRows = [];
-    const headers = ["CODE", "UserName", "Email", "Phone", "Date Of Birth"];
+    const headers = ["CODE", "User Name", "Email", "Phone"];
     csvRows.push(headers.join(","));
 
     users.forEach(user => {
-      const values = [user.id, user.name, user.email, user.role];
+      const values = [user.code, user.userName, user.email, user.phone];
       csvRows.push(values.join(","));
     });
 
@@ -31,12 +31,30 @@ export default function UsersTable({ users }) {
 
   return (
     <div className="mt-6">
-      <div className="flex gap-3 mb-3">
-        <Button variant="outlined" onClick={exportToCSV}>Export CSV</Button>
-        <Button variant="outlined" onClick={printTable}>Print</Button>
-      </div>
+        {/* Buttons Row */}
+        <div className="flex justify-between items-center mb-3 w-full">
+          
+          {/* Left side buttons */}
+          <div className="flex gap-3">
+            <Button variant="outlined" onClick={exportToCSV}>Export CSV</Button>
+            <Button variant="outlined" onClick={printTable}>Print</Button>
+          </div>
 
-      <table id="users-table" border="1" width="100%" cellPadding={8}>
+          {/* Right side button */}
+          <button
+            type="button"
+            id="openmodal"
+            data-toggle="modal"
+            data-target="#data_Model"
+            className="btn btn-light font-weight-bolder flex items-center gap-2"
+          >
+            <i className="fa fa-plus-circle"></i>
+            NEW REQUEST
+          </button>
+        </div>
+
+
+      <table className="table" id="users-table" border="1" width="100%" cellPadding={8}>
         <thead>
           <tr>
             <th>S.NO</th><th>Code</th><th>UserName</th><th>Email</th><th>Phone</th><th>Active</th><th>Action</th>

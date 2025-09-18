@@ -40,6 +40,42 @@ h1 {
   line-height: 1.1;
 }
 
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #3e4676;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid black;
+    padding: .25rem .7rem;
+    font-size: .9375rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+    transition: color .15s 
+ease-in-out, background-color .15s 
+ease-in-out, border-color .15s 
+ease-in-out, box-shadow .15s 
+ease-in-out;
+}
+
+.btn-light {
+  color: #343a40;
+  background-color: #e9ecef;
+  border-color: #e9ecef
+}
+
+.btn:hover {
+  color: #3e4676;
+  text-decoration: none;
+}
+.font-weight-bolder {
+    font-weight: bolder !important;
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -57,6 +93,26 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Generic table styles */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  color: black; /* ✅ text always black */
+}
+
+.table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-align: left;
 }
 
 @media (prefers-color-scheme: light) {
